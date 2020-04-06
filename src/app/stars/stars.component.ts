@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'nga-stars',
@@ -7,10 +7,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   // encapsulation: ViewEncapsulation.ShadowDom
 })
 export class StarsComponent implements OnInit {
+  @Input() count = 5;
+  @Input() rating = 0;
+  stars: boolean[] = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    for (let i = 1; i <= this.count; i++) {
+      this.stars.push(i > this.rating);
+    }
   }
-
 }

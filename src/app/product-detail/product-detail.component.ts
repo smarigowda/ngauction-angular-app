@@ -11,10 +11,14 @@ import { Product, ProductService } from '../shared/product.service';
 export class ProductDetailComponent implements OnInit {
   productId: number;
   product: Product;
-  constructor(private activeRoute: ActivatedRoute, private productService: ProductService) { }
+
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
-    this.activeRoute.params.subscribe(routeParams => {
+    this.activeRoute.params.subscribe((routeParams) => {
       this.productId = parseInt(routeParams.productId, 10);
     });
 

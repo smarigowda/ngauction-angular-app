@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Product, ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'nga-home',
@@ -7,10 +8,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   // encapsulation: ViewEncapsulation.ShadowDom
 })
 export class HomeComponent implements OnInit {
+  products: Product[] = [];
 
-  constructor() { }
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
+    this.products = this.productService.getProducts();
+    console.log('products = ', this.products);
   }
-
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Product } from '../shared/product.service';
 
 @Component({
   selector: 'nga-product-item',
@@ -7,10 +8,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   // encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ProductItemComponent implements OnInit {
+  @Input() product: Product;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

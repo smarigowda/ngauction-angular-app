@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product, ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'nga-product-detail',
@@ -9,11 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
   productId: number;
-  constructor(private activeRoute: ActivatedRoute) { }
+  product: Product;
+  constructor(private activeRoute: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe(routeParams => {
       this.productId = parseInt(routeParams.productId, 10);
     });
+
+    this.product = this.productService.getProductById(this.productId);
   }
 }

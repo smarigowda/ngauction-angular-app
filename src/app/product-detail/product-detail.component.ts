@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'nga-product-detail',
@@ -7,10 +8,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   // encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ProductDetailComponent implements OnInit {
-
-  constructor() { }
+  productId: number;
+  constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activeRoute.params.subscribe(routeParams => {
+      this.productId = parseInt(routeParams.productId, 10);
+    });
   }
-
 }
